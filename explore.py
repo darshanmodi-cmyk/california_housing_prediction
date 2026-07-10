@@ -9,3 +9,4 @@ df["Price"] = data.target
 
 print(df.head())
 print(df.describe())
+print("Work on the dataset is done")
