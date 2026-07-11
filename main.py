@@ -70,5 +70,22 @@ def predict(house: HouseData):
             "confidence_high": float(price + 39000)
         }
 
+        except ValueError:
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "error": "Invalid Input",
+                "message": "One or more input values are invalid."
+            }
+        )
+
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        print(f"Prediction Error: {e}")
+
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "error": "Prediction Failed",
+                "message": "Unable to generate a prediction at this time. Please try again later."
+            }
+        )
